@@ -28,6 +28,13 @@ public class ObstacleController : MonoBehaviour {
             GetComponent<Animation>().Play();
             GameObject.FindObjectOfType<PlayerController>().Shake(this.transform.localScale);
         }
+        
+        if (other.gameObject.GetComponent<ProjectileController>())
+        {
+            ProjectileController projectileController = other.gameObject.GetComponent<ProjectileController>();
+            projectileController.Destroy();
+            GetComponent<Animation>().Play();
+        }
     }
 
     public void Deactivate()

@@ -6,13 +6,8 @@ public class ProjectileController : MonoBehaviour {
 
     public string projectileName;
 
-	// Use this for initialization
-	void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
+	public void Destroy()
+    {
+        Destroy(this.gameObject);
+    }
 }
