@@ -13,11 +13,11 @@ public class PlayerInput : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        if (Input.GetMouseButton(1))
+        if (Input.GetMouseButtonDown(1))
         {
             weaponsMenu.Open();
         }
-        else
+        else if (Input.GetMouseButtonUp(1))
         {
             weaponsMenu.Close();
         }

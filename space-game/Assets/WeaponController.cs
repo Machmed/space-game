@@ -5,11 +5,13 @@ using UnityEngine;
 public enum Weapon
 {
     SingleRocket,
+    Minigun
 }
 
 public enum Ammunition
 {
     SmallRocket,
+    Bullet9mm
 }
 
 public class WeaponController : MonoBehaviour {
@@ -21,6 +23,7 @@ public class WeaponController : MonoBehaviour {
     public Dictionary<Ammunition, int> playerAmmo;
     float cooldownTime = 1.0f;
     public float currentCooldown = 0.0f;
+    CurrentWeapon currentWeaponVis;
 
     // Projectile
     private Dictionary<Ammunition, GameObject> projectileMapping;
@@ -29,7 +32,16 @@ public class WeaponController : MonoBehaviour {
 
     void SetBasicWeapon()
     {
-        currentWeapon = Weapon.SingleRocket;
+        //currentWeapon = Weapon.SingleRocket;
+        //currentWeapon = Weapon.Minigun;
+        SwitchWeapon(Weapon.SingleRocket);
+    }
+
+    public void SwitchWeapon(Weapon weapon)
+    {
+        currentWeapon = weapon;
+        currentWeaponVis.SwitchWeapon(weapon);
+
     }
 
     void MapProjectile()
@@ -61,6 +73,11 @@ public class WeaponController : MonoBehaviour {
                 case Weapon.SingleRocket:
                     {
                         ammoMapping.Add(Weapon.SingleRocket, Ammunition.SmallRocket);
+                        break;
+                    }
+                case Weapon.Minigun:
+                    {
+                        ammoMapping.Add(Weapon.Minigun, Ammunition.Bullet9mm);
                         break;
                     }
             }
@@ -171,6 +188,7 @@ public class WeaponController : MonoBehaviour {
 
     public void Initialize()
     {
+        currentWeaponVis = FindObjectOfType<CurrentWeapon>();
         SetBasicWeapon();
         MapAmmo();
         SetupAmmo();
