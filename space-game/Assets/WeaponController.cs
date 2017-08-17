@@ -24,6 +24,7 @@ public class WeaponController : MonoBehaviour {
             weaponInstance.weaponName = weapon.ToString();
             weaponInstance.ammoType = AmmunitionType.MiniRocket;
             weaponInstance.oneShotAmmoNeed = 1;
+            weaponInstance.force = 60000.0f;
             currentWeapons.Add(weapon, weaponInstance);
 
             return true;

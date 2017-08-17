@@ -12,6 +12,8 @@ public class Weapon : MonoBehaviour {
     public float currentCooldown = 0.0f;
     private PlayerResources res;
     public float force = 100.0f;
+
+    private PoolController pool;
 	
     public void Start()
     {
@@ -21,6 +23,8 @@ public class Weapon : MonoBehaviour {
         // Handle visuals
 
         GameObject.FindObjectOfType<WeaponVisController>().AddWeapon(weaponType);
+
+        pool = GameObject.FindObjectOfType<PoolController>();
     }
 
     public void Die()
@@ -46,10 +50,13 @@ public class Weapon : MonoBehaviour {
     {
         for (int i = 0; i < oneShotAmmoNeed; i++)
         {
-            GameObject projectile = Instantiate(template);
-            projectile.transform.position = this.gameObject.transform.position;
-            ProjectileController pc = projectile.GetComponent<ProjectileController>();
-            pc.Init(ammoType, force);
+            GameObject projectile = pool.GetProjectileAndActivate(ammoType);
+            if (projectile != null)
+            {
+                projectile.transform.position = this.gameObject.transform.position;
+                ProjectileController pc = projectile.GetComponent<ProjectileController>();
+                pc.Init(ammoType, force);
+            }
         }
     }
 

@@ -19,5 +19,19 @@ public class ProjectileController : MonoBehaviour {
     {
         ammoType = type;
         GetComponent<Rigidbody2D>().AddForce(Vector2.up * strength * Time.deltaTime);
+        Invoke("Deactivate", 3.0f);
+    }
+
+    public void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.gameObject.GetComponent<Collidable>())
+        {
+            Deactivate();
+        }
+    }
+
+    public void Deactivate()
+    {
+        this.gameObject.SetActive(false);
     }
 }

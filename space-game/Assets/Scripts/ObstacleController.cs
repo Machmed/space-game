@@ -28,6 +28,12 @@ public class ObstacleController : MonoBehaviour {
             GetComponent<Animation>().Play();
             GameObject.FindObjectOfType<PlayerController>().Shake(this.transform.localScale);
         }
+
+        if (other.gameObject.GetComponent<ProjectileController>())
+        {
+            float scale = Random.Range(0.7f, 1.3f);
+            this.transform.localScale = new Vector2(scale, scale);
+        }
     }
 
     public void Deactivate()
