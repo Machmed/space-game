@@ -85,6 +85,26 @@ public class PlayerController : MonoBehaviour {
             }
         }
 
+        if (Input.GetKeyDown(KeyCode.Alpha1) && Input.GetKey(KeyCode.Q) == false)
+        {
+            GetComponent<WeaponController>().AddWeapon(WeaponType.Minigun);
+        }
+
+        if (Input.GetKeyDown(KeyCode.Alpha2) && Input.GetKey(KeyCode.Q) == false)
+        {
+            GetComponent<WeaponController>().AddWeapon(WeaponType.RocketLauncher);
+        }
+
+        if (Input.GetKeyDown(KeyCode.Alpha1) && Input.GetKey(KeyCode.Q))
+        {
+            GetComponent<WeaponController>().RemoveWeapon(WeaponType.Minigun);
+        }
+
+        if (Input.GetKeyDown(KeyCode.Alpha2) && Input.GetKey(KeyCode.Q))
+        {
+            GetComponent<WeaponController>().RemoveWeapon(WeaponType.RocketLauncher);
+        }
+
 	}    
 
     public void Shake(Vector3 scale)

@@ -17,6 +17,15 @@ public class Weapon : MonoBehaviour {
     {
         res = GameObject.FindObjectOfType<PlayerResources>();
         StartCoroutine("Cooldown");
+
+        // Handle visuals
+
+        GameObject.FindObjectOfType<WeaponVisController>().AddWeapon(weaponType);
+    }
+
+    public void Die()
+    {
+        GameObject.FindObjectOfType<WeaponVisController>().RemoveWeapon(weaponType);
     }
 
 	public void Use()
