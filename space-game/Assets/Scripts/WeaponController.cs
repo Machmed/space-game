@@ -19,15 +19,30 @@ public class WeaponController : MonoBehaviour {
 
         if (!hasWeapon)
         {
-            weaponInstance = this.gameObject.AddComponent<Weapon>();
-            weaponInstance.weaponType = weapon;
-            weaponInstance.weaponName = weapon.ToString();
-            weaponInstance.ammoType = AmmunitionType.MiniRocket;
-            weaponInstance.oneShotAmmoNeed = 1;
-            weaponInstance.force = 60000.0f;
-            currentWeapons.Add(weapon, weaponInstance);
+            // Get definition
+            WeaponDefinition wd = GameObject.FindObjectOfType<XMLReader>().GetWeaponDefinition(weapon);
+            if (wd != null)
+            {
+                weaponInstance = this.gameObject.AddComponent<Weapon>();
+                weaponInstance.weaponType = weapon;
+                weaponInstance.weaponName = wd.WeaponName;
 
-            return true;
+                var values = AmmunitionType.GetValues(typeof(AmmunitionType));
+
+                foreach (AmmunitionType ammo in values)
+                {
+                    if (ammo.ToString() == wd.AmmoType)
+                    {
+                        weaponInstance.ammoType = ammo;
+                    }
+                }
+                weaponInstance.oneShotAmmoNeed = wd.OneShotAmmoNeed;
+                weaponInstance.force = wd.Force;
+                weaponInstance.cooldownTime = wd.CooldownTime;
+                currentWeapons.Add(weapon, weaponInstance);
+
+                return true;
+            }
         }
 
         return false;

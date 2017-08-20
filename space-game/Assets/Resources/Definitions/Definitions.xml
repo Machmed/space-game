@@ -1,0 +1,18 @@
+<WeaponsCollection>
+	<Weapons>
+		<WeaponDefinition name = "Mini Gun">
+			<WeaponType>Minigun</WeaponType>
+			<AmmoType>Bullet9mm</AmmoType>
+			<OneShotAmmoNeed>1</OneShotAmmoNeed>
+			<CooldownTime>0.2</CooldownTime>
+			<Force>80000.00</Force>
+		</WeaponDefinition>
+		<WeaponDefinition name = "Rocket Launcher">
+			<WeaponType>RocketLauncher</WeaponType>
+			<AmmoType>SmallRocket</AmmoType>
+			<OneShotAmmoNeed>1</OneShotAmmoNeed>
+			<CooldownTime>0.5</CooldownTime>
+			<Force>65000.00</Force>
+		</WeaponDefinition>
+	</Weapons>
+</WeaponsCollection>

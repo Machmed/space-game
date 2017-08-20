@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class ObstacleController : MonoBehaviour {
 
+    public float health = 1000.0f;
+
 	// Use this for initialization
 	void Start () {
 		
@@ -33,11 +35,19 @@ public class ObstacleController : MonoBehaviour {
         {
             float scale = Random.Range(0.7f, 1.3f);
             this.transform.localScale = new Vector2(scale, scale);
+
+            health -= 100.0f;
+            if (health <= 0.0f)
+            {
+                Deactivate();
+                Instantiate(Resources.Load<GameObject>("ExplosionEffect"), this.transform.position, Quaternion.identity);
+            }
         }
     }
 
     public void Deactivate()
     {
+        this.health = 1000.0f;
         this.gameObject.SetActive(false);
     }
 }

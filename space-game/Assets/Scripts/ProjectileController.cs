@@ -26,6 +26,7 @@ public class ProjectileController : MonoBehaviour {
     {
         if (other.gameObject.GetComponent<Collidable>())
         {
+            Debug.Log("Projectile has hit collidable, deactivating.");
             Deactivate();
         }
     }
