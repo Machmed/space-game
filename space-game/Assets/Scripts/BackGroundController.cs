@@ -17,6 +17,8 @@ public class BackGroundController : MonoBehaviour {
 
     public GameObject planet;
     public List<GameObject> planets;
+    public float maxScale = 0.5f;
+    public float minScale = 0.3f;
 
     public int maxPlanetCount = 10;
     public int planetCount = 2;
@@ -66,7 +68,7 @@ public class BackGroundController : MonoBehaviour {
             GameObject _unactiveObject = GetObject(objects);
             _unactiveObject.transform.position = new Vector3(Random.Range(-xRange, xRange), Random.Range(minY, maxY), 0.0f);
             _unactiveObject.SetActive(true);
-            float scale = Random.Range(0.7f, 1.5f);
+            float scale = Random.Range(minScale, maxScale);
             _unactiveObject.transform.localScale = new Vector3(scale, scale, scale);
         }
     }

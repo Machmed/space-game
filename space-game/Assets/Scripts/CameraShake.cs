@@ -23,14 +23,12 @@ public class CameraShake : MonoBehaviour {
         strength = _strength;
         duration = _duration;
         StartCoroutine("Shake");
-        Debug.Log("Shake");
     }
 
     IEnumerator Shake()
     {
         shouldResetPosition = false;
 
-        Debug.Log("Shake" + " start");
         for (float i = 0; i < duration; i += Time.deltaTime)
         {
             this.transform.localPosition += new Vector3(Mathf.Sin(Time.realtimeSinceStartup * strength * 300.0f) * strength, 0, 0);

@@ -24,9 +24,9 @@ public class ObstacleController : MonoBehaviour {
     public void OnTriggerEnter2D(Collider2D other)
     {
         Debug.Log("Colision: " + other.gameObject.name);
-        if (other.gameObject.tag == "Ball")
+        if (other.gameObject.tag == "Player")
         {
-            GameObject.FindObjectOfType<PlayerController>().HP -= 100;
+            GameObject.FindObjectOfType<PlayerController>().GetHit(100);
             GetComponent<Animation>().Play();
             GameObject.FindObjectOfType<PlayerController>().Shake(this.transform.localScale);
         }
@@ -40,13 +40,16 @@ public class ObstacleController : MonoBehaviour {
             if (health <= 0.0f)
             {
                 Deactivate();
-                Instantiate(Resources.Load<GameObject>("ExplosionEffect"), this.transform.position, Quaternion.identity);
             }
         }
     }
 
     public void Deactivate()
     {
+        GameObject particle = Instantiate(Resources.Load<GameObject>("ExplosionEffect"), this.transform.position, Quaternion.identity);
+        particle.GetComponent<FXPlayer>().SoundName = "explosion1";
+        particle.GetComponent<FXPlayer>().PlaySound();
+
         this.health = 1000.0f;
         this.gameObject.SetActive(false);
     }

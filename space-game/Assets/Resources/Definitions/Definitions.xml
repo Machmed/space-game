@@ -1,18 +1,67 @@
-<WeaponsCollection>
+<Collection>
 	<Weapons>
 		<WeaponDefinition name = "Mini Gun">
 			<WeaponType>Minigun</WeaponType>
 			<AmmoType>Bullet9mm</AmmoType>
-			<OneShotAmmoNeed>1</OneShotAmmoNeed>
+			<OneShotAmmoNeed>4</OneShotAmmoNeed>
 			<CooldownTime>0.2</CooldownTime>
-			<Force>80000.00</Force>
+			<Force>800.00</Force>
 		</WeaponDefinition>
 		<WeaponDefinition name = "Rocket Launcher">
 			<WeaponType>RocketLauncher</WeaponType>
 			<AmmoType>SmallRocket</AmmoType>
-			<OneShotAmmoNeed>1</OneShotAmmoNeed>
+			<OneShotAmmoNeed>4</OneShotAmmoNeed>
 			<CooldownTime>0.5</CooldownTime>
-			<Force>65000.00</Force>
+			<Force>650.00</Force>
 		</WeaponDefinition>
 	</Weapons>
-</WeaponsCollection>
+  <Bonuses>
+    <BonusDefinition name = "Health">
+      <BonusType>Health</BonusType>
+      <Functionalities>
+        <Functionality>
+          <Method>AddHealth</Method>
+          <Value>10</Value>
+        </Functionality>
+      </Functionalities>
+      <Red>255</Red>
+      <Green>0</Green>
+      <Blue>0</Blue>
+    </BonusDefinition>
+    <BonusDefinition name = "Ammunition 9mm">
+      <BonusType>Ammunition</BonusType>
+      <Functionalities>
+        <Functionality>
+          <Method>AddAmmo</Method>
+          <Value>Bullet9mm</Value>
+        </Functionality>
+      </Functionalities>
+      <Red>0</Red>
+      <Green>0</Green>
+      <Blue>255</Blue>
+    </BonusDefinition>
+    <BonusDefinition name = "Ammunition Small Rocket">
+      <BonusType>Ammunition</BonusType>
+      <Functionalities>
+        <Functionality>
+          <Method>AddAmmo</Method>
+          <Value>SmallRocket</Value>
+        </Functionality>
+      </Functionalities>
+      <Red>0</Red>
+      <Green>255</Green>
+      <Blue>0</Blue>
+    </BonusDefinition>
+  </Bonuses>
+  <Sounds>
+    <SoundDefinition name="testSound">
+      <Type>test</Type>
+      <Path>Sounds/test</Path>
+    </SoundDefinition>
+    <SoundDefinition name="explosion1">
+      <Type>explosion</Type>
+      <Path>Sounds/explosion1</Path>
+    </SoundDefinition>
+  </Sounds>
+</Collection>
+  

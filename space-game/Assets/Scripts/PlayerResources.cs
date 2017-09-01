@@ -8,6 +8,9 @@ public class PlayerResources : MonoBehaviour {
     private AmmoVisManager ammoManager;
     private Dictionary<AmmunitionType, GameObject> projectiles;
 
+    [Range(1, 9999)]
+    public int _MaxAmmoCount = 1000;
+
 	// Use this for initialization
 	void Start () {
         ammunition = new Dictionary<AmmunitionType, int>();
@@ -19,9 +22,6 @@ public class PlayerResources : MonoBehaviour {
             ammunition.Add(value, 1000);
             GameObject projectileGO = (GameObject)Resources.Load(value.ToString());
             projectiles.Add(value, projectileGO);
-            Debug.Log("Loaded: " + value.ToString() + " path: " + value.ToString());
-            Debug.Log(" object name: " + projectileGO.name);
-
         }
 
         ammoManager = GameObject.FindObjectOfType<AmmoVisManager>();
@@ -33,6 +33,16 @@ public class PlayerResources : MonoBehaviour {
     {
         return projectiles[type];
     }
+
+    public void AddAmmo(AmmunitionType type, int count)
+    {
+        if (ammunition[type] + count <= _MaxAmmoCount)
+        {
+            ammunition[type] += count;
+        }
+    }
+
+
 
     public bool RemoveAmmo(AmmunitionType type, int? count = null)
     {
